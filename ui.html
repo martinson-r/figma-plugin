@@ -1,0 +1,33 @@
+<h2>Please make a selection</h2>
+<p>Foreground:</p>
+<p>Background:</p>
+<button id="check-contrast">Check contrast on WebAIM</button>
+<button id="cancel">Cancel</button>
+<script>
+
+
+
+onmessage = event => {
+  console.log('event', event)
+  const message = event.data.pluginMessage
+  console.log('message:', message)
+}
+
+document.getElementById('check-contrast').onclick = () => {
+
+  parent.postMessage({ pluginMessage: { type: 'get-selection' } }, '*');
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+
+
+// window.onmessage = msg => {
+
+//   console.log('got message');
+//   //console.log("got this from the plugin code", event.data.pluginMessage)
+// }
+
+</script>
